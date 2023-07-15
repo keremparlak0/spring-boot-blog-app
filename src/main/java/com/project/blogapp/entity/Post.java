@@ -14,7 +14,6 @@ import java.util.Date;
 @Table(name = "post")
 @Data
 public class Post extends BaseEntity{
-    @Column
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE) //Bir user silindiğinde postlar da silinecek

@@ -10,19 +10,17 @@ import org.hibernate.annotations.OnDeleteAction;
 @Table(name = "comment")
 @Data
 public class Comment extends BaseEntity{
-    @Column
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE) //Bir user silindiğinde postlar da silinecek
     @JsonIgnore
     User user;
 
-    @Column
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "postId")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Long postId;
+    Post post;
 
     @Column
     private String title;

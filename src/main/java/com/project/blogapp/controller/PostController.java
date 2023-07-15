@@ -1,5 +1,7 @@
 package com.project.blogapp.controller;
 
+import com.project.blogapp.dto.PostCreateDto;
+import com.project.blogapp.dto.PostUpdateDto;
 import com.project.blogapp.entity.Post;
 import com.project.blogapp.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +21,8 @@ public class PostController {
     }
 
     @PostMapping("/")
-    public Post createPost(@RequestBody Post post){
-        return postService.createPost(post);
+    public Post createPost(@RequestBody PostCreateDto postCreateDto){
+        return postService.createPost(postCreateDto);
     }
 
     @GetMapping("/{postId}")
@@ -28,8 +30,13 @@ public class PostController {
         return postService.getPostById(postId);
     }
 
-//    @PutMapping("/{postId}")
-//    public Post updatePostById(@PathVariable Long postId, @RequestBody Post post){
-//        return postService.updatePostById(postId, post);
-//    }
+    @PutMapping("/{postId}")
+    public Post updatePostById(@PathVariable Long postId, @RequestBody PostUpdateDto postUpdateDto){
+        return postService.updatePostById(postId, postUpdateDto);
+    }
+
+    @DeleteMapping("/{postId}")
+    public void deletePostById(@PathVariable Long postId){
+        postService.deletePostById(postId);
+    }
 }
