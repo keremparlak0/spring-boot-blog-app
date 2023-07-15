@@ -26,15 +26,16 @@ public class PostService {
 
     public Post createPost(PostCreateDto postCreateDto) {
         User user = userService.getUserById(postCreateDto.getUserId());
-        if (user == null) {
+        if (user != null) {
+            Post postToSave = new Post();
+            postToSave.setId(postCreateDto.getId());
+            postToSave.setTitle(postCreateDto.getTitle());
+            postToSave.setContent(postCreateDto.getContent());
+            postToSave.setUser(user);
+            return postRepository.save(postToSave);
+        }else{
             return null;
         }
-        Post toSave = new Post();
-        toSave.setId(postCreateDto.getId());
-        toSave.setTitle(postCreateDto.getTitle());
-        toSave.setContent(postCreateDto.getContent());
-        toSave.setUser(user);
-        return postRepository.save(toSave);
     }
 
     public Post getPostById(Long postId) {
@@ -45,11 +46,11 @@ public class PostService {
     public Post updatePostById(Long postId, PostUpdateDto postUpdateDto) {
         Optional<Post> postById = postRepository.findById(postId);
         if (postById.isPresent()){
-            Post toUpdate = postById.get();
-            toUpdate.setContent(postUpdateDto.getContent());
-            toUpdate.setTitle(postUpdateDto.getTitle());
-            postRepository.save(toUpdate);
-            return toUpdate;
+            Post postToUpdate = postById.get();
+            postToUpdate.setContent(postUpdateDto.getContent());
+            postToUpdate.setTitle(postUpdateDto.getTitle());
+            postRepository.save(postToUpdate);
+            return postToUpdate;
         }
         return null;
     }
