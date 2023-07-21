@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
-//    @Query("SELECT * FROM blogapp.post WHERE user_id = ;")
     List<Post> findByUserId(Long userId);
 
     int countByTitle(String title);

@@ -1,4 +1,4 @@
-package com.project.blogapp.exceptionHandler;
+package com.project.blogapp.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,11 +12,11 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class ExceptionHandlerConfig {
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException e){
-        Map<String ,String> errors = new HashMap<>();
-        for (FieldError fieldError  : e.getFieldErrors()){
-            errors.put(fieldError.getField(),fieldError.getDefaultMessage());
+    @ExceptionHandler({MethodArgumentNotValidException.class})
+    public ResponseEntity<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        Map<String, String> errors = new HashMap<>();
+        for (FieldError fieldError : e.getFieldErrors()) {
+            errors.put(fieldError.getField(), fieldError.getDefaultMessage());
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
