@@ -20,7 +20,8 @@ Bu projeyi çalıştırmak için aşağıdaki yazılımların yüklü olması ge
 
 
 2. `application.properties` dosyasında, veritabanı bağlantısı için gerekli bilgileri düzenleyin:
-``` spring.datasource.url = jdbc:mysql://localhost:3306/blogapp
+```
+spring.datasource.url = jdbc:mysql://localhost:3306/blogapp
 spring.datasource.username = root
 spring.datasource.password = password
 spring.datasource.driver-class-name = com.mysql.jdbc.Driver
