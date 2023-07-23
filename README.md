@@ -23,7 +23,8 @@ Bu projeyi çalıştırmak için aşağıdaki yazılımların yüklü olması ge
 ``` spring.datasource.url = jdbc:mysql://localhost:3306/blogapp
 spring.datasource.username = root
 spring.datasource.password = password
-spring.datasource.driver-class-name = com.mysql.jdbc.Driver ```
+spring.datasource.driver-class-name = com.mysql.jdbc.Driver
+```
 
 Uygulama başarıyla başlatıldığında, `http://localhost:8080` adresine giderek blog app'inizi kullanmaya başlayabilirsiniz.
 
